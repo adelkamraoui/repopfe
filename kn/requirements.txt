@@ -1,0 +1,8 @@
+numpy
+pandas
+django
+scipy
+scikit-learn
+flask
+gunicorn
+requests

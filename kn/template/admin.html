@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Page d'administrateur</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .button {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .disconnect-button {
+            text-align: right;
+            margin-top: 20px;
+            margin-right: 20px;
+        }
+
+        .disconnect-button button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .disconnect-button button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="disconnect-button">
+        <button onclick="confirmDisconnect()">Disconnect</button>
+    </div>
+    <h1>Page d'administrateur</h1>
+
+    <a href="/Factorisation" class="button">Lancer la factorisation en temps réel</a>
+    <a href="/ajoutfilm" class="button">Ajouter des films</a>
+    <a href="/supprimefilm" class="button">Supprimer des films</a>
+
+    <script>
+        function confirmDisconnect() {
+            var confirmDisconnect = confirm("Are you sure you want to disconnect?");
+            if (confirmDisconnect) {
+                // Add your disconnect logic here
+                // For example, redirect the user to a logout page or perform any necessary cleanup
+                // You can replace the window.location.href with the appropriate URL
+                window.location.href = "/login";
+            }
+        }
+    </script>
+</body>
+</html>

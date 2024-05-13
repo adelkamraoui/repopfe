@@ -1,0 +1,24 @@
+##Docker
+
+#install docker package
+
+#Build docker
+sudo docker build -t mywebapp .
+
+#launch docker (do it every time you want to run the server)
+sudo docker run -p 8000:8000 mywebapp
+
+
+######################################
+
+
+## google cloud
+
+#au debut (une seule fois)
+gcloud init
+
+#pour deployer
+gcloud app deploy
+
+#pour voir l'app
+gcloud app browse

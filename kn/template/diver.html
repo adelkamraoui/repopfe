@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Diversified Films</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+		h1 {
+			text-align: center;
+			color: #333;
+			margin-top: 30px;
+		}
+		table {
+			margin: 0 auto;
+			border-collapse: collapse;
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+			background-color: #fff;
+			border-radius: 10px;
+			overflow: hidden;
+			max-width: 800px;
+			width: 100%;
+		}
+		th, td {
+			padding: 10px;
+			text-align: left;
+		}
+		th {
+			background-color: #333;
+			color: #fff;
+		}
+		tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+		img {
+			max-height: 100px;
+			max-width: 80px;
+			object-fit: contain;
+			margin-left: auto;
+			margin-right: auto;
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<h1>Diversified Films</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Movie ID</th>
+				<th>Title</th>
+				<th>Genre</th>
+				<th>Poster</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for index, row in diversified.iterrows() %}
+			<tr>
+				<td>{{ row['movieId'] }}</td>
+				<td>{{ row['title'] }}</td>
+				<td>{{ row['genres'] }}</td>
+				<td><img src="{{ row['urls'] }}" alt="{{ row['title'] }} Poster"></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</body>
+</html>
+

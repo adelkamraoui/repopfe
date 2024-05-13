@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Films Recommended for You</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+		h1 {
+			text-align: center;
+			color: #333;
+			margin-top: 30px;
+		}
+		table {
+			margin: 0 auto;
+			border-collapse: collapse;
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+			background-color: #fff;
+			border-radius: 10px;
+			overflow: hidden;
+			max-width: 800px;
+			width: 100%;
+		}
+		th, td {
+			padding: 10px;
+			text-align: left;
+		}
+		th {
+			background-color: #333;
+			color: #fff;
+		}
+		tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+		img {
+			max-height: 100px;
+			max-width: 80px;
+			object-fit: contain;
+			margin-left: auto;
+			margin-right: auto;
+			display: block;
+		}
+		a {
+			display: block;
+			text-align: center;
+			margin-top: 30px;
+			color: #666;
+			text-decoration: none;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
+        .disconnect-button {
+            text-align: right;
+            margin-top: 20px;
+            margin-right: 20px;
+        }
+        .disconnect-button button {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .disconnect-button button:hover {
+            background-color: #d32f2f;
+        }
+	</style>
+</head>
+<body>
+    <div class="disconnect-button">
+        <button onclick="confirmDisconnect()">Disconnect</button>
+    </div>
+	<h1>Films Recommended for You</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Movie ID</th>
+				<th>Title</th>
+				<th>Genre</th>
+				<th>Poster</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for index, row in predictions.iterrows() %}
+			<tr>
+				<td>{{ row['movieId'] }}</td>
+				<td>{{ row['title'] }}</td>
+				<td>{{ row['genres'] }}</td>
+				<td><img src="{{ row['urls'] }}" alt="{{ row['title'] }} Poster"></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<a href="/allfilms/{{id}}">Rate New Films</a>
+	<a href="/diver/{{id}}">Diversify Your Films</a>
+
+    <script>
+        function confirmDisconnect() {
+            var confirmDisconnect = confirm("Are you sure you want to disconnect?");
+            if (confirmDisconnect) {
+                // Add your disconnect logic here
+                // For example, redirect the user to a logout page or perform any necessary cleanup
+                // You can replace the window.location.href with the appropriate URL
+
+            window.location.href = "/login";
+        }
+    }
+</script>

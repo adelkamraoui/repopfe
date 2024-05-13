@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Register</title>
+    <style>
+      body {
+        background-color: #f9f9f9;
+        font-family: Arial, sans-serif;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 36px;
+        color: #333;
+      }
+
+      form {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      }
+
+      label {
+        display: block;
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #555;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="email"] {
+        padding: 10px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+        width: 100%;
+      }
+
+      input[type="submit"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+      input[type="submit"]:hover {
+        background-color: #666;
+      }
+      p {
+        color: #cc0000;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Register</h1>
+    {% if error %}
+      <p>{{ error }}</p>
+    {% endif %}
+    <form method="post">
+      <label>Username:</label>
+      <input type="text" name="username"><br>
+      <label>Password:</label>
+      <input type="password" name="password"><br>
+      <label>Email:</label>
+      <input type="email" name="email"><br>
+      <input type="submit" value="Rate some films">
+    </form>
+  </body>
+</html>

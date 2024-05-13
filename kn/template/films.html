@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>films</title>
+	<style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            margin-bottom: 60px;
+        }
+        .pagination a, .pagination span {
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #1a0dab;
+            background-color: #fff;
+        }
+        .pagination a:hover {
+            background-color: #f1f3f4;
+        }
+        .pagination span {
+            border-color: #1a0dab;
+            color: #fff;
+            background-color: #1a0dab;
+            cursor: default;
+        }
+        .pagination .ellipsis {
+            padding: 5px 0;
+        }
+        .search-bar {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      .search-bar input {
+        font-size: 24px;
+        padding: 10px;
+        border-radius: 10px;
+        border: 2px solid black;
+      }
+
+      .search-bar button {
+        font-size: 24px;
+        padding: 10px;
+        border-radius: 10px;
+        border: 2px solid black;
+        margin-left: 10px;
+      }
+      table {
+			margin: 0 auto;
+			border-collapse: collapse;
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+			background-color: #fff;
+			border-radius: 10px;
+			overflow: hidden;
+			max-width: 800px;
+			width: 100%;
+		}
+		th, td {
+			padding: 10px;
+			text-align: left;
+		}
+		th {
+			background-color: #333;
+			color: #fff;
+		}
+		tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+		img {
+			max-height: 100px;
+			max-width: 80px;
+			object-fit: contain;
+			margin-left: auto;
+			margin-right: auto;
+			display: block;
+		}
+		a {
+			display: block;
+			text-align: center;
+			margin-top: 30px;
+			color: #666;
+			text-decoration: none;
+		}
+		a:hover {
+			text-decoration: underline;
+		}
+    </style>
+</head>
+<body>
+    <div class="search-bar">
+        <form method="get" action="/allfilms/{{idd}}">
+          <input type="text" name="search" placeholder="Search for a film" autocomplete="off" value="{{ search }}">
+          <button type="submit">Search</button>
+        </form>
+      </div>
+	<table>
+		<thead>
+			<tr>
+				<th>movie Id</th>
+				<th>title</th>
+                <th>genre</th>
+                
+			</tr>
+		</thead>
+		<tbody>
+			{% for index, row in movie.iterrows() %}
+			<tr>
+				<td>{{ row['movieId'] }}</td>
+				<td><a href="/allfilms/{{idd}}/{{ row['movieId'] }}">{{ row['title'] }}</a></td>
+                <td>{{ row['genres'] }}</td>
+				<td><img src="{{ row['urls'] }}" alt="Movie Poster"></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<div class="pagination">
+        {% if current_page > 1 %}
+        <a href="{{ url_for('showfilms',id=idd,search=search, page=current_page - 1) }}">Previous</a>
+        {% endif %}
+        {% if current_page > 3 %}
+        <a href="{{ url_for('showfilms',id=idd,search=search, page=1) }}">1</a>
+        {% endif %}
+        {% if current_page > 4 %}
+        <span class="ellipsis">...</span>
+        {% endif %}
+        {% for page in range(current_page - 2, current_page + 3) %}
+        {% if page > 0 and page <= num_pages %}
+        {% if page == current_page %}
+        <span>{{ page }}</span>
+        {% else %}
+        <a href="{{ url_for('showfilms',search=search, id=idd,page=page) }}">{{ page }}</a>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        {% if current_page < num_pages - 3 %}
+        <span class="ellipsis">...</span>
+        {% endif %}
+        {% if current_page < num_pages - 2 %}
+        <a href="{{ url_for('showfilms',search=search, id=idd,page=num_pages) }}">{{ num_pages }}</a>
+        {% endif %}
+        {% if current_page < num_pages %}
+        <a href="{{ url_for('showfilms',id=idd, search=search,page=current_page + 1) }}">Next</a>
+        {% endif %}
+    </div>
+</body>
+</html>
