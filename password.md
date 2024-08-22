@@ -7,3 +7,5 @@ Object ID
 Directory (tenant) ID
 :
 757bdf2a-9fe4-43ea-b5c9-fdb554650622
+
+secret ID:ecdeb219-84ac-47b6-82cc-29922ab86e7a
