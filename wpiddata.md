@@ -1,0 +1,1 @@
+"AadClientId":"49a0f479-bd6f-427f-a75b-ba57be16c573","AadSecret":"ecdeb219-84ac-47b6-82cc-29922ab86e7a","AadTenantId":"757bdf2a-9fe4-43ea-b5c9-fdb554650622", "Name":"testAd"
